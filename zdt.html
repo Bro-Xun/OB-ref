@@ -334,6 +334,49 @@
         }
     </style>
     <script>
-        eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('l m(b){F(G H(I(b))).J("K",{L:!1}).3(/:\\d{1,2}$/," ").3(/M:/,"N:")}7.O=l(){n b=!7.c;o(!b)o(p==c.q("8")){n a=7.h.8;0==b&&c.P("8",r.Q(a))}R p==7.h?r.S(c.q("8")):(a=7.h.8,4.e=a.i.3("s","t")+": "+a.e,4.9("e").5=a.e,4.9("j").5=a.j,4.9("u").5=4.9("u").5.3("i",a.i.3("s","t")).3("T",U(a.V).3(","," | ")).3("W",X.Y(a.Z/11)/10+"\\12\\13").3("14",m(a.15)).3("16",a.17).3("18",4.9("j").19.1a),1b.1c("1d 1e 1f"),1==a.1g?(4.6("f-g")[0].5=4.6("f-g")[0].5.3("v","\\w\\x\\y\\k\\z\\1h\\k\\1i\\1j\\1k\\1l\\1m\\1n\\1o\\1p\\1q\\1r\\A\\1s\\1t\\1u\\A\\1v"),4.6("B-C")[0].D.E="1w"):(4.6("f-g")[0].5=4.6("f-g")[0].5.3("v","\\w\\x\\1x\\y\\k\\z\\1y\\1z\\1A\\1B"),4.6("B-C")[0].D.E="1C"))};',62,101,'|||replace|document|innerHTML|getElementsByClassName|window|data|getElementById|||localStorage||title|detailed|info|opener|author|content|u4f5c|function|getLocalTime|var|if|null|getItem|JSON|Hydi|BroXun|detailedinfo|copyrighted|u672c|u6587|u8457|u6743|u7528|fa|ban|style|color|return|new|Date|parseInt|toLocaleString|chinese|hour12|24|00|onload|setItem|stringify|else|parse|tagss|String|tags|edittime|Math|floor|edit_time||6E3|u5206|u949f|releasedate|timestamp|view|views|words|innerText|length|console|log|script|successfully|run|copyright|u5f52|u8005|u6240|u6709|uff0c|u672a|u7ecf|u8bb8|u53ef|u7981|u6b62|u4e8e|u5546|u4e1a|u9014|red|u65e0|u76f8|u5173|u9650|u5236|black'.split('|'),0,{}))    </script>
+                if(window.opener!=null){
+            document.ObjId = window.opener.id;
+        }
+        
+        function getLocalTime(mS) {
+            return new Date(parseInt(mS)).toLocaleString('chinese', { hour12: false }).replace(/:\d{1,2}$/, ' ').replace(/24:/, "00:");
+        }
+        window.onload = function () {
+            var ls = !window.localStorage;
+            if (ls) {
+                var data = window.opener.data;
+            }
+            else {
+                if (localStorage.getItem("data") == null) {
+                    var data = window.opener.data;
+                    if (ls == false) {
+                        localStorage.setItem("data", JSON.stringify(data));
+                    }
+                }
+                else {
+                    if (window.opener == null) {
+                        var data = JSON.parse(localStorage.getItem("data"));
+                    }
+                    else {
+                        var data = window.opener.data;
+					}
+                        document.title = data.author.replace("Hydi", "BroXun") + ": " + data.title;
+                        document.getElementById("title").innerHTML = data.title;
+                        document.getElementById("content").innerHTML = data.content;
+                        document.getElementById("detailedinfo").innerHTML = document.getElementById("detailedinfo").innerHTML.replace("author", data.author.replace("Hydi", "BroXun")).replace("tagss",String(data.tags).replace(","," | ")).replace("edittime", Math.floor((data.edit_time) / 6000) / 10 + "分钟").replace("releasedate", getLocalTime(data.timestamp)).replace("view", data.views).replace("words", document.getElementById("content").innerText.length);
+                        console.log("script successfully run");
+                        document.getElementsByClassName("detailed-info")[1].innerHTML = document.getElementsByClassName("detailed-info")[1].innerHTML.replace("shareurl", "share this page at " + window.location.host + "/fetch?id=" + document.ObjId + "&&&");
+                        if (data.copyright == true) {
+                            document.getElementsByClassName("detailed-info")[0].innerHTML = document.getElementsByClassName("detailed-info")[0].innerHTML.replace("copyrighted", "本文著作权归作者所有，未经许可禁止用于商业用途");
+                            document.getElementsByClassName("fa-ban")[0].style.color = "red";
+                        }
+                        else {
+                            document.getElementsByClassName("detailed-info")[0].innerHTML = document.getElementsByClassName("detailed-info")[0].innerHTML.replace("copyrighted", "本文无著作权相关限制");
+                            document.getElementsByClassName("fa-ban")[0].style.color = "black";
+                        }
+                    }
+                }
+            }
+        </script>
 </body>
 </html>
