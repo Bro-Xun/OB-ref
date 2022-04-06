@@ -375,6 +375,7 @@
                         document.getElementById("detailedinfo").innerHTML = document.getElementById("detailedinfo").innerHTML.replace("author", data.author.replace("Hydi", "BroXun")).replace("tagss",String(data.tags).replace(/,/g," | ")).replace("edittime", Math.floor((data.edit_time) / 6000) / 10 + "分钟").replace("releasedate", getLocalTime(data.timestamp)).replace("view", data.views).replace("words", document.getElementById("content").innerText.length);
                         console.log("script successfully run");
 			window.id = data.id;
+			do
                         if (data.copyright == true) {
                             document.getElementsByClassName("detailed-info")[0].innerHTML = document.getElementsByClassName("detailed-info")[0].innerHTML.replace("copyrighted", "本文著作权归作者所有，未经许可禁止用于商业用途");
                             document.getElementsByClassName("fa-ban")[0].style.color = "red";
@@ -391,10 +392,10 @@
             el: '#vcomments',
             appId: 'DiPteWf2rwUEp35tXAKfrwXX-gzGzoHsz',
             appKey: 'jiSnqV4rcW98zqsiukBms61u',
-			visitor: true,
-			recordIP: true,
-			requiredFields:['nick'],
-		path: window.id,
+		visitor: true,
+		recordIP: true,
+		requiredFields:['nick'],
+		path: window.id
 		    });
         </script>
 </body>
