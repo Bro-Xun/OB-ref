@@ -48,6 +48,7 @@
 						document.getElementsByClassName("main")[0].innerHTML = "您请求的对象不存在，换一个试试吧~";
 					} else {
 						data = det[0].attributes;
+						data.id = request;
 						console.info("2");
 						window.id = det[0].id;
 						document.getElementsByClassName("main")[0].innerHTML = "解析成功，正在跳转~";
