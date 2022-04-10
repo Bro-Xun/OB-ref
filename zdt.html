@@ -43,7 +43,7 @@
 					}}}
 			//window.id = data.id;
 			document.ObjId = data.id;
-			document.getElementsByClassName("leancloud_visitors")[0].id = data.id;
+			//document.getElementsByClassName("leancloud_visitors")[0].id = data.id;
 			console.log(data);
                         document.title = data.author.replace("Hydi", "BroXun") + ": " + data.title;
                         document.getElementById("title").innerHTML = data.title;
@@ -95,10 +95,10 @@
                 style="display:block;color:black;background:wheat;padding:0.1cm;border-radius: 5px;margin-bottom: 0.3cm;padding:4px;padding-left:10px">
                 <i class="fa fa-ban" aria-hidden="true"></i>copyrighted</div>
 		<!-- id 将作为查询条件 -->
-		<span id="javascript:document.ObjId" class="leancloud_visitors" data-flag-title="Your Article Title">
+		<!--<span id="javascript:document.ObjId" class="leancloud_visitors" data-flag-title="Your Article Title">
     			<em class="post-meta-item-text">阅读量 </em>
     			<i class="leancloud-visitors-count">1000000</i>
-		</span>
+		</span>-->
             <div class="share-holder">
                 <div class="rin-tr"></div>
 		    <div id="vcomments"></div>
